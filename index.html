@@ -17,6 +17,7 @@
             --primary-color: #2c3e50;
             --secondary-color: #3498db;
             --accent-color: #e74c3c;
+            --success-color: #27ae60;
             --light-color: #ecf0f1;
             --dark-color: #2c3e50;
             --text-color: #333;
@@ -28,6 +29,7 @@
             background-color: #f8f9fa;
             color: var(--text-color);
             padding-top: 80px;
+            overflow-x: hidden;
         }
 
         /* Fixed Navigation Bar */
@@ -109,6 +111,7 @@
         .nav-icons {
             display: flex;
             gap: 20px;
+            align-items: center;
         }
 
         .nav-icons i {
@@ -122,7 +125,7 @@
             color: var(--secondary-color);
         }
 
-        .cart-count {
+        .cart-count, .notification-count {
             position: absolute;
             top: -8px;
             right: -8px;
@@ -137,7 +140,11 @@
             justify-content: center;
         }
 
-        .cart-icon {
+        .notification-count {
+            background-color: var(--success-color);
+        }
+
+        .cart-icon, .notification-icon {
             position: relative;
         }
 
@@ -206,6 +213,24 @@
             background-color: #2980b9;
             transform: translateY(-3px);
             box-shadow: var(--shadow);
+        }
+
+        .btn-success {
+            background-color: var(--success-color);
+        }
+
+        .btn-success:hover {
+            background-color: #219653;
+        }
+
+        .btn-pay {
+            background-color: var(--success-color);
+            padding: 15px 40px;
+            font-size: 18px;
+        }
+
+        .btn-pay:hover {
+            background-color: #219653;
         }
 
         /* Main Content */
@@ -583,7 +608,8 @@
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 12px 15px;
             border: 1px solid #ddd;
@@ -593,9 +619,200 @@
         }
 
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             border-color: var(--secondary-color);
             outline: none;
+        }
+
+        /* Payment Page */
+        .payment-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .payment-methods {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .payment-method {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .payment-method:hover {
+            border-color: var(--secondary-color);
+            background-color: #f8f9fa;
+        }
+
+        .payment-method.active {
+            border-color: var(--secondary-color);
+            background-color: #e8f4fc;
+        }
+
+        .payment-icon {
+            font-size: 30px;
+            color: var(--secondary-color);
+            margin-right: 20px;
+            width: 40px;
+        }
+
+        .payment-details {
+            flex: 1;
+        }
+
+        .payment-details h4 {
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .payment-details p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .qr-payment-section {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .qr-code-container {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .qr-code-img {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .qr-code-img img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .payment-amount {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin: 20px 0;
+        }
+
+        .payment-info {
+            text-align: left;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 8px 0;
+        }
+
+        .info-label {
+            color: #666;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .timer {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin: 15px 0;
+        }
+
+        /* Order Summary */
+        .order-summary {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-color);
+            border-top: 2px solid #eee;
+            margin-top: 10px;
+        }
+
+        .order-items {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .order-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .order-item-img {
+            width: 60px;
+            height: 80px;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .order-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .order-item-info {
+            flex: 1;
+        }
+
+        .order-item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .order-item-price {
+            color: var(--accent-color);
+            font-weight: 600;
         }
 
         /* Footer */
@@ -804,7 +1021,297 @@
             color: #ddd;
         }
 
+        /* Payment Modal */
+        .payment-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1002;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .payment-modal.active {
+            display: flex;
+        }
+
+        .payment-container-modal {
+            background-color: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        .payment-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .payment-header h2 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .close-payment {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            color: #999;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-payment:hover {
+            color: var(--accent-color);
+        }
+
+        /* Login Modal */
+        .login-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1002;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-modal.active {
+            display: flex;
+        }
+
+        .login-container {
+            background-color: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-header h2 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .login-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .login-tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+
+        .login-tab.active {
+            color: var(--secondary-color);
+            border-bottom-color: var(--secondary-color);
+        }
+
+        .login-form {
+            display: none;
+        }
+
+        .login-form.active {
+            display: block;
+        }
+
+        .close-login {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            color: #999;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-login:hover {
+            color: var(--accent-color);
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .form-footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* User Profile */
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: white;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            min-width: 200px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .user-dropdown.active {
+            display: block;
+            animation: dropdownFadeIn 0.3s ease;
+        }
+
+        .dropdown-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--light-color);
+        }
+
+        .dropdown-item i {
+            color: var(--secondary-color);
+            width: 20px;
+        }
+
+        /* Notifications Panel */
+        .notifications-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            transition: var(--transition);
+            padding: 30px 25px;
+            overflow-y: auto;
+        }
+
+        .notifications-panel.active {
+            right: 0;
+        }
+
+        .notifications-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .notifications-header h3 {
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .close-notifications {
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--accent-color);
+        }
+
+        .notification-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .notification-item.unread {
+            background-color: #e8f4fc;
+            border-left-color: var(--secondary-color);
+        }
+
+        .notification-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .notification-time {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        .clear-notifications {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background-color: var(--light-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
         /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 100%;
+                padding: 0 30px;
+            }
+        }
+
         @media (max-width: 992px) {
             .nav-links {
                 gap: 20px;
@@ -815,9 +1322,14 @@
             }
             
             .about-content,
-            .contact-content {
+            .contact-content,
+            .payment-container {
                 grid-template-columns: 1fr;
                 gap: 40px;
+            }
+            
+            .features {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -860,7 +1372,8 @@
                 font-size: 18px;
             }
             
-            .cart-sidebar {
+            .cart-sidebar,
+            .notifications-panel {
                 width: 100%;
                 right: -100%;
             }
@@ -868,6 +1381,20 @@
             .books-header {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .user-name {
+                display: none;
+            }
+            
+            .payment-methods,
+            .qr-payment-section,
+            .order-summary {
+                padding: 30px 20px;
             }
         }
 
@@ -881,13 +1408,152 @@
             }
             
             .book-card {
-                max-width: 300px;
-                margin: 0 auto;
+                max-width: 100%;
             }
             
-            .contact-form {
+            .contact-form,
+            .payment-container-modal,
+            .login-container {
                 padding: 30px 20px;
             }
+            
+            .qr-code-img {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .categories-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-icons {
+                gap: 15px;
+            }
+            
+            .hero {
+                padding: 60px 20px;
+            }
+            
+            .filter-options {
+                justify-content: center;
+            }
+            
+            .filter-btn {
+                padding: 6px 15px;
+                font-size: 14px;
+            }
+            
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-method {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .payment-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+
+        /* Animations */
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes dropdownFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 1003;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading-spinner.active {
+            display: flex;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--secondary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Success Checkmark */
+        .success-checkmark {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1004;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .success-checkmark.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .checkmark-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--success-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .checkmark-circle i {
+            font-size: 40px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
@@ -913,15 +1579,61 @@
             </ul>
             
             <div class="nav-icons">
+                <div class="notification-icon" id="notificationIcon">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-count">3</span>
+                </div>
                 <div class="cart-icon" id="cartIcon">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="cart-count">0</span>
                 </div>
-                <i class="fas fa-user" id="accountIcon"></i>
+                <div class="user-profile" id="userProfile">
+                    <div class="user-avatar" id="userAvatar">G</div>
+                    <span class="user-name" id="userName">Guest</span>
+                    <div class="user-dropdown" id="userDropdown">
+                        <div class="dropdown-item" id="loginBtn">
+                            <i class="fas fa-sign-in-alt"></i>
+                            <span>Login / Register</span>
+                        </div>
+                        <div class="dropdown-item" id="myAccountBtn" style="display: none;">
+                            <i class="fas fa-user"></i>
+                            <span>My Account</span>
+                        </div>
+                        <div class="dropdown-item" id="myOrdersBtn" style="display: none;">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span>My Orders</span>
+                        </div>
+                        <div class="dropdown-item" id="wishlistBtn" style="display: none;">
+                            <i class="fas fa-heart"></i>
+                            <span>Wishlist</span>
+                        </div>
+                        <div class="dropdown-item" id="logoutBtn" style="display: none;">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </div>
+                    </div>
+                </div>
                 <i class="fas fa-search" id="searchIcon"></i>
             </div>
         </div>
     </nav>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Success Checkmark -->
+    <div class="success-checkmark" id="successCheckmark">
+        <div>
+            <div class="checkmark-circle">
+                <i class="fas fa-check"></i>
+            </div>
+            <h2 style="margin-bottom: 10px;">Payment Successful!</h2>
+            <p>Your order has been confirmed</p>
+            <p style="margin-top: 20px; font-size: 14px; opacity: 0.8;">Redirecting to home page...</p>
+        </div>
+    </div>
 
     <!-- Cart Sidebar -->
     <div class="cart-sidebar" id="cartSidebar">
@@ -941,7 +1653,225 @@
             <span>Total:</span>
             <span id="cartTotal">$0.00</span>
         </div>
-        <button class="btn" style="width: 100%;" id="checkoutBtn">Proceed to Checkout</button>
+        <button class="btn btn-pay" style="width: 100%;" id="checkoutBtn">
+            <i class="fas fa-lock"></i> Proceed to Payment
+        </button>
+    </div>
+
+    <!-- Payment Modal -->
+    <div class="payment-modal" id="paymentModal">
+        <div class="payment-container-modal">
+            <div class="close-payment" id="closePayment">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="payment-header">
+                <h2>Complete Your Payment</h2>
+                <p>Choose your preferred payment method</p>
+            </div>
+            
+            <div class="payment-methods">
+                <div class="payment-method active" data-method="qr">
+                    <div class="payment-icon">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <div class="payment-details">
+                        <h4>QR Code Payment</h4>
+                        <p>Scan QR code to pay instantly</p>
+                    </div>
+                </div>
+                
+                <div class="payment-method" data-method="card">
+                    <div class="payment-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <div class="payment-details">
+                        <h4>Credit/Debit Card</h4>
+                        <p>Pay with your card securely</p>
+                    </div>
+                </div>
+                
+                <div class="payment-method" data-method="paypal">
+                    <div class="payment-icon">
+                        <i class="fab fa-paypal"></i>
+                    </div>
+                    <div class="payment-details">
+                        <h4>PayPal</h4>
+                        <p>Pay with your PayPal account</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="qrPaymentSection" style="display: block;">
+                <div class="qr-payment-section">
+                    <div class="qr-code-container">
+                        <div class="qr-code-img">
+                            <img src="/Image/QRcode.png" alt="Payment QR Code" id="paymentQrCode">
+                        </div>
+                        <div class="payment-amount" id="paymentAmount">$0.00</div>
+                        <div class="timer" id="paymentTimer">15:00</div>
+                        <p>Scan this QR code with your mobile banking app</p>
+                    </div>
+                    
+                    <div class="payment-info">
+                        <div class="info-item">
+                            <span class="info-label">Order ID:</span>
+                            <span class="info-value" id="orderId">MSB-20231215-001</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Payment Status:</span>
+                            <span class="info-value" id="paymentStatus" style="color: var(--accent-color);">Pending</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Valid For:</span>
+                            <span class="info-value">15 minutes</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-pay" style="width: 100%; margin-top: 20px;" id="simulatePaymentBtn">
+                        <i class="fas fa-mobile-alt"></i> Simulate Payment
+                    </button>
+                    <button class="btn" style="width: 100%; margin-top: 10px; background-color: #666;" id="openScannerBtn">
+                        <i class="fas fa-camera"></i> Open QR Scanner
+                    </button>
+                </div>
+            </div>
+            
+            <div id="cardPaymentSection" style="display: none;">
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                    </div>
+                    
+                    <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div>
+                            <label for="expiryDate">Expiry Date</label>
+                            <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5">
+                        </div>
+                        <div>
+                            <label for="cvv">CVV</label>
+                            <input type="password" id="cvv" placeholder="123" maxlength="3">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cardName">Name on Card</label>
+                        <input type="text" id="cardName" placeholder="Moon Zii">
+                    </div>
+                    
+                    <button class="btn btn-pay" style="width: 100%;" id="processCardPayment">
+                        <i class="fas fa-lock"></i> Pay $<span id="cardPaymentAmount">0.00</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div id="paypalPaymentSection" style="display: none;">
+                <div class="qr-payment-section">
+                    <div style="text-align: center; padding: 40px 0;">
+                        <i class="fab fa-paypal" style="font-size: 60px; color: #003087; margin-bottom: 20px;"></i>
+                        <h3 style="margin-bottom: 20px;">Pay with PayPal</h3>
+                        <p>You will be redirected to PayPal to complete your payment</p>
+                        <p class="payment-amount" style="margin: 30px 0;">$<span id="paypalPaymentAmount">0.00</span></p>
+                        <button class="btn btn-pay" style="width: 100%; background-color: #003087;" id="processPaypalPayment">
+                            <i class="fab fa-paypal"></i> Pay with PayPal
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifications Panel -->
+    <div class="notifications-panel" id="notificationsPanel">
+        <div class="notifications-header">
+            <h3>Notifications</h3>
+            <div class="close-notifications" id="closeNotifications">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="notifications-list" id="notificationsList">
+            <!-- Notifications will be added dynamically -->
+        </div>
+        <button class="clear-notifications" id="clearNotifications">Clear All Notifications</button>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-container">
+            <div class="close-login" id="closeLogin">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="login-header">
+                <h2>Welcome Back</h2>
+                <p>Please login to your account</p>
+            </div>
+            
+            <div class="login-tabs">
+                <div class="login-tab active" data-tab="login">Login</div>
+                <div class="login-tab" data-tab="register">Register</div>
+            </div>
+            
+            <form class="login-form active" id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                
+                <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <input type="checkbox" id="rememberMe">
+                        <label for="rememberMe" style="display: inline; font-weight: normal;">Remember me</label>
+                    </div>
+                    <a href="#" id="forgotPassword" style="font-size: 14px;">Forgot password?</a>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%;">Login</button>
+                
+                <div class="form-footer">
+                    <p>Don't have an account? <a href="#" id="switchToRegister">Register here</a></p>
+                </div>
+            </form>
+            
+            <form class="login-form" id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">Full Name</label>
+                    <input type="text" id="registerName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="registerEmail">Email Address</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+                
+                <div class="form-group">
+                    <input type="checkbox" id="agreeTerms" required>
+                    <label for="agreeTerms" style="display: inline; font-weight: normal;">
+                        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-success" style="width: 100%;">Create Account</button>
+                
+                <div class="form-footer">
+                    <p>Already have an account? <a href="#" id="switchToLogin">Login here</a></p>
+                </div>
+            </form>
+        </div>
     </div>
 
     <!-- Home Page -->
@@ -1045,8 +1975,8 @@
                 </div>
                 
                 <div class="about-text">
-                    <h3>Welcome to Chapter & Verse</h3>
-                    <p>Founded in 2010, Chapter & Verse has grown from a small local bookstore to one of the most trusted online book retailers. Our mission is simple: to connect readers with books they'll love.</p>
+                    <h3>Welcome to Moon & Sunflower</h3>
+                    <p>Founded in 2010, Moon & Sunflower has grown from a small local bookstore to one of the most trusted online book retailers. Our mission is simple: to connect readers with books they'll love.</p>
                     <p>We believe in the power of stories to transform lives, spark imagination, and bring people together. That's why we carefully curate our collection to include both timeless classics and exciting new voices.</p>
                     <p>Our team of book enthusiasts reads constantly to provide personalized recommendations and ensure we stock only the highest quality books across all genres.</p>
                     <a href="#contact" class="btn nav-link" data-page="contact">Get in Touch</a>
@@ -1121,7 +2051,7 @@
                             <i class="fas fa-envelope"></i>
                             <div>
                                 <h4>Email Us</h4>
-                                <p>info@chapterverse.com<br>support@chapterverse.com</p>
+                                <p>info@moonsunflower.com<br>support@moonsunflower.com</p>
                             </div>
                         </div>
                     </div>
@@ -1168,7 +2098,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Chapter & <span>Verse</span></h3>
+                <h3>Moon & <span>Sunflower</span></h3>
                 <p>Your trusted online bookstore since 2010. We offer a wide selection of books across all genres, with fast delivery and excellent customer service.</p>
                 <div class="social-icons">
                     <i class="fab fa-facebook-f"></i>
@@ -1197,7 +2127,7 @@
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2023 Chapter & Verse Bookstore. All rights reserved.</p>
+            <p>&copy; 2023 Moon & Sunflower Bookstore. All rights reserved.</p>
         </div>
     </footer>
 
@@ -1343,90 +2273,6 @@
                 isNew: false,
                 pages: 336,
                 language: "English"
-            },
-            {
-                id: 11,
-                title: "Educated",
-                author: "Tara Westover",
-                price: 19.99,
-                image: "https://images.unsplash.com/photo-1513001900722-370f803f498d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                category: "non-fiction",
-                rating: 4.7,
-                description: "A memoir about a woman who leaves her survivalist family and goes on to earn a PhD from Cambridge University.",
-                isBestseller: true,
-                isNew: false,
-                pages: 352,
-                language: "English"
-            },
-            {
-                id: 12,
-                title: "The Seven Husbands of Evelyn Hugo",
-                author: "Taylor Jenkins Reid",
-                price: 22.99,
-                image: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                category: "fiction",
-                rating: 4.6,
-                description: "Aging Hollywood icon Evelyn Hugo finally tells the truth about her glamorous life and seven marriages.",
-                isBestseller: true,
-                isNew: false,
-                pages: 400,
-                language: "English"
-            },
-            {
-                id: 13,
-                title: "Dune",
-                author: "Frank Herbert",
-                price: 29.99,
-                image: "https://images.unsplash.com/photo-1531901599638-a88c5bc9f03d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                category: "sci-fi",
-                rating: 4.8,
-                description: "Epic science fiction set in the distant future amidst a feudal interstellar society.",
-                isBestseller: true,
-                isNew: false,
-                pages: 896,
-                language: "English"
-            },
-            {
-                id: 14,
-                title: "The Hobbit",
-                author: "J.R.R. Tolkien",
-                price: 17.99,
-                image: "https://images.unsplash.com/photo-1621351183012-e2f9972dd9bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80",
-                category: "fantasy",
-                rating: 4.9,
-                description: "Bilbo Baggins embarks on an unexpected adventure with a group of dwarves and the wizard Gandalf.",
-                isBestseller: true,
-                isNew: false,
-                pages: 310,
-                language: "English"
-            },
-            {
-                id: 15,
-                title: "Becoming",
-                author: "Michelle Obama",
-                price: 23.99,
-                image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
-                category: "non-fiction",
-                rating: 4.9,
-                description: "A intimate, powerful, and inspiring memoir by the former First Lady of the United States.",
-                isBestseller: true,
-                isNew: false,
-                pages: 448,
-                language: "English"
-            },
-            {
-                id: 16,
-                title: "The Night Circus",
-                author: "Erin Morgenstern",
-                price: 21.99,
-                image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=698&q=80",
-                category: "fantasy",
-                rating: 4.4,
-                description: "A magical competition between two illusionists set in a mysterious circus that only opens at night.",
-                isBestseller: true,
-                isNew: false,
-                pages: 512,
-                language: "English"
             }
         ];
 
@@ -1463,54 +2309,31 @@
                 icon: "fas fa-user-secret",
                 image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
                 bookCount: 41
+            }
+        ];
+
+        // Notifications data
+        const notifications = [
+            {
+                id: 1,
+                title: "Welcome to Moon & Sunflower!",
+                message: "Get 15% off your first order with code WELCOME15",
+                time: "2 hours ago",
+                read: false
             },
             {
-                id: 5,
-                name: "Romance",
-                description: "Stories of love and relationships",
-                icon: "fas fa-heart",
-                image: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                bookCount: 36
+                id: 2,
+                title: "New Arrival Alert",
+                message: "The new Stephen King novel is now available",
+                time: "1 day ago",
+                read: false
             },
             {
-                id: 6,
-                name: "Historical Fiction",
-                description: "Fictional stories set in the past",
-                icon: "fas fa-landmark",
-                image: "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80",
-                bookCount: 29
-            },
-            {
-                id: 7,
-                name: "Non-Fiction",
-                description: "Factual books on real events and topics",
-                icon: "fas fa-glasses",
-                image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1112&q=80",
-                bookCount: 52
-            },
-            {
-                id: 8,
-                name: "Biography",
-                description: "Life stories of notable people",
-                icon: "fas fa-user",
-                image: "https://images.unsplash.com/photo-1513001900722-370f803f498d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                bookCount: 27
-            },
-            {
-                id: 9,
-                name: "Young Adult",
-                description: "Books for teenage readers",
-                icon: "fas fa-user-graduate",
-                image: "https://images.unsplash.com/photo-1571167530149-4402e4d62d85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80",
-                bookCount: 34
-            },
-            {
-                id: 10,
-                name: "Children's Books",
-                description: "Books for young readers",
-                icon: "fas fa-child",
-                image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                bookCount: 48
+                id: 3,
+                title: "Order Shipped",
+                message: "Your order #MSB-2023-001 has been shipped",
+                time: "3 days ago",
+                read: true
             }
         ];
 
@@ -1518,6 +2341,10 @@
         let cart = [];
         let cartTotal = 0;
         let currentFilter = "all";
+        let currentUser = null;
+        let unreadNotifications = 3;
+        let paymentTimer = null;
+        let timeLeft = 900; // 15 minutes in seconds
 
         // DOM Elements
         const pageContents = document.querySelectorAll('.page-content');
@@ -1533,6 +2360,12 @@
         const cartItems = document.getElementById('cartItems');
         const cartTotalElement = document.getElementById('cartTotal');
         const cartCount = document.querySelector('.cart-count');
+        const notificationIcon = document.getElementById('notificationIcon');
+        const notificationsPanel = document.getElementById('notificationsPanel');
+        const closeNotifications = document.getElementById('closeNotifications');
+        const notificationsList = document.getElementById('notificationsList');
+        const clearNotificationsBtn = document.getElementById('clearNotifications');
+        const notificationCount = document.querySelector('.notification-count');
         const menuToggle = document.getElementById('menuToggle');
         const navLinksContainer = document.getElementById('navLinks');
         const searchIcon = document.getElementById('searchIcon');
@@ -1544,16 +2377,55 @@
         const newsletterEmail = document.getElementById('newsletterEmail');
         const subscribeBtn = document.getElementById('subscribeBtn');
         const checkoutBtn = document.getElementById('checkoutBtn');
+        const paymentModal = document.getElementById('paymentModal');
+        const closePayment = document.getElementById('closePayment');
+        const paymentMethods = document.querySelectorAll('.payment-method');
+        const qrPaymentSection = document.getElementById('qrPaymentSection');
+        const cardPaymentSection = document.getElementById('cardPaymentSection');
+        const paypalPaymentSection = document.getElementById('paypalPaymentSection');
+        const paymentQrCode = document.getElementById('paymentQrCode');
+        const paymentAmount = document.getElementById('paymentAmount');
+        const orderId = document.getElementById('orderId');
+        const paymentStatus = document.getElementById('paymentStatus');
+        const paymentTimerElement = document.getElementById('paymentTimer');
+        const simulatePaymentBtn = document.getElementById('simulatePaymentBtn');
+        const openScannerBtn = document.getElementById('openScannerBtn');
+        const cardPaymentAmount = document.getElementById('cardPaymentAmount');
+        const paypalPaymentAmount = document.getElementById('paypalPaymentAmount');
+        const processCardPayment = document.getElementById('processCardPayment');
+        const processPaypalPayment = document.getElementById('processPaypalPayment');
+        const loginModal = document.getElementById('loginModal');
+        const loginBtn = document.getElementById('loginBtn');
+        const closeLogin = document.getElementById('closeLogin');
+        const loginTabs = document.querySelectorAll('.login-tab');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const switchToRegister = document.getElementById('switchToRegister');
+        const switchToLogin = document.getElementById('switchToLogin');
+        const userProfile = document.getElementById('userProfile');
+        const userDropdown = document.getElementById('userDropdown');
+        const userAvatar = document.getElementById('userAvatar');
+        const userName = document.getElementById('userName');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const myAccountBtn = document.getElementById('myAccountBtn');
+        const myOrdersBtn = document.getElementById('myOrdersBtn');
+        const wishlistBtn = document.getElementById('wishlistBtn');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const successCheckmark = document.getElementById('successCheckmark');
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
             renderBooks();
             renderCategories();
+            renderNotifications();
             setupEventListeners();
             updateCartDisplay();
             
             // Show home page by default
             showPage('home');
+            
+            // Check if user is logged in from localStorage
+            checkUserLogin();
         });
 
         // Show specific page
@@ -1698,6 +2570,42 @@
             });
         }
 
+        // Render notifications
+        function renderNotifications() {
+            notificationsList.innerHTML = '';
+            
+            if (notifications.length === 0) {
+                notificationsList.innerHTML = `
+                    <div style="text-align: center; padding: 40px 0; color: #666;">
+                        <i class="fas fa-bell-slash" style="font-size: 60px; margin-bottom: 20px;"></i>
+                        <p>No notifications</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            notifications.forEach(notification => {
+                const notificationItem = document.createElement('div');
+                notificationItem.className = `notification-item ${notification.read ? '' : 'unread'}`;
+                notificationItem.innerHTML = `
+                    <div class="notification-title">${notification.title}</div>
+                    <div class="notification-message">${notification.message}</div>
+                    <div class="notification-time">${notification.time}</div>
+                `;
+                
+                notificationItem.addEventListener('click', () => {
+                    if (!notification.read) {
+                        notification.read = true;
+                        unreadNotifications--;
+                        notificationCount.textContent = unreadNotifications;
+                        renderNotifications();
+                    }
+                });
+                
+                notificationsList.appendChild(notificationItem);
+            });
+        }
+
         // Create a book card element
         function createBookCard(book) {
             const bookCard = document.createElement('div');
@@ -1818,8 +2726,169 @@
             cartTotalElement.textContent = `$${cartTotal.toFixed(2)}`;
         }
 
+        // Open payment modal
+        function openPaymentModal() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!', 'error');
+                return;
+            }
+            
+            if (!currentUser) {
+                showNotification('Please login to checkout', 'info');
+                loginModal.classList.add('active');
+                cartSidebar.classList.remove('active');
+                return;
+            }
+            
+            // Close cart sidebar
+            cartSidebar.classList.remove('active');
+            
+            // Update payment details
+            updatePaymentDetails();
+            
+            // Generate new order ID
+            const orderIdValue = `MSB-${new Date().getFullYear()}${(new Date().getMonth()+1).toString().padStart(2, '0')}${new Date().getDate().toString().padStart(2, '0')}-${Math.floor(Math.random() * 1000).toString().padStart(3, '0')}`;
+            orderId.textContent = orderIdValue;
+            
+            // Reset timer
+            timeLeft = 900; // 15 minutes
+            updatePaymentTimer();
+            startPaymentTimer();
+            
+            // Show payment modal
+            paymentModal.classList.add('active');
+        }
+
+        // Update payment details
+        function updatePaymentDetails() {
+            const totalAmount = cartTotal.toFixed(2);
+            paymentAmount.textContent = `$${totalAmount}`;
+            cardPaymentAmount.textContent = totalAmount;
+            paypalPaymentAmount.textContent = totalAmount;
+            
+            // Update QR code with order amount
+            paymentQrCode.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=MSBOOKSTORE-ORDER-${orderId.textContent}-AMOUNT-${totalAmount}`;
+        }
+
+        // Start payment timer
+        function startPaymentTimer() {
+            if (paymentTimer) {
+                clearInterval(paymentTimer);
+            }
+            
+            paymentTimer = setInterval(() => {
+                timeLeft--;
+                updatePaymentTimer();
+                
+                if (timeLeft <= 0) {
+                    clearInterval(paymentTimer);
+                    paymentStatus.textContent = 'Expired';
+                    paymentStatus.style.color = 'var(--accent-color)';
+                    showNotification('Payment session expired. Please restart the payment process.', 'error');
+                }
+            }, 1000);
+        }
+
+        // Update payment timer display
+        function updatePaymentTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            paymentTimerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // Process payment
+        function processPayment() {
+            showLoading();
+            
+            // Simulate payment processing
+            setTimeout(() => {
+                hideLoading();
+                
+                // Clear payment timer
+                if (paymentTimer) {
+                    clearInterval(paymentTimer);
+                }
+                
+                // Update payment status
+                paymentStatus.textContent = 'Completed';
+                paymentStatus.style.color = 'var(--success-color)';
+                
+                // Show success animation
+                successCheckmark.classList.add('active');
+                
+                // Clear cart
+                cart = [];
+                updateCartDisplay();
+                
+                // Close payment modal after delay
+                setTimeout(() => {
+                    paymentModal.classList.remove('active');
+                    successCheckmark.classList.remove('active');
+                    
+                    // Redirect to home page
+                    showPage('home');
+                    showNotification('Payment successful! Your order will be shipped soon.', 'success');
+                    
+                    // Add order notification
+                    addOrderNotification();
+                }, 3000);
+            }, 2000);
+        }
+
+        // Add order notification
+        function addOrderNotification() {
+            const newNotification = {
+                id: notifications.length + 1,
+                title: "Order Confirmed",
+                message: `Your order ${orderId.textContent} has been confirmed and is being processed.`,
+                time: "Just now",
+                read: false
+            };
+            
+            notifications.unshift(newNotification);
+            unreadNotifications++;
+            notificationCount.textContent = unreadNotifications;
+            renderNotifications();
+        }
+
+        // Check user login status
+        function checkUserLogin() {
+            const savedUser = localStorage.getItem('bookstoreUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                updateUserUI();
+            }
+        }
+
+        // Update user UI based on login status
+        function updateUserUI() {
+            if (currentUser) {
+                // User is logged in
+                userName.textContent = currentUser.name.split(' ')[0];
+                userAvatar.textContent = currentUser.name.charAt(0).toUpperCase();
+                
+                // Show user dropdown items
+                loginBtn.style.display = 'none';
+                myAccountBtn.style.display = 'flex';
+                myOrdersBtn.style.display = 'flex';
+                wishlistBtn.style.display = 'flex';
+                logoutBtn.style.display = 'flex';
+            } else {
+                // User is not logged in
+                userName.textContent = 'Guest';
+                userAvatar.textContent = 'G';
+                
+                // Show login option
+                loginBtn.style.display = 'flex';
+                myAccountBtn.style.display = 'none';
+                myOrdersBtn.style.display = 'none';
+                wishlistBtn.style.display = 'none';
+                logoutBtn.style.display = 'none';
+            }
+        }
+
         // Show notification
-        function showNotification(message) {
+        function showNotification(message, type = 'success') {
             // Create notification element
             const notification = document.createElement('div');
             notification.className = 'notification';
@@ -1828,13 +2897,15 @@
                 position: fixed;
                 top: 100px;
                 right: 20px;
-                background-color: var(--secondary-color);
+                background-color: ${type === 'success' ? 'var(--success-color)' : 'var(--accent-color)'};
                 color: white;
                 padding: 15px 20px;
                 border-radius: 5px;
                 box-shadow: var(--shadow);
                 z-index: 1002;
                 animation: slideIn 0.3s ease;
+                max-width: 300px;
+                word-wrap: break-word;
             `;
             
             document.body.appendChild(notification);
@@ -1843,9 +2914,86 @@
             setTimeout(() => {
                 notification.style.animation = 'slideOut 0.3s ease';
                 setTimeout(() => {
-                    document.body.removeChild(notification);
+                    if (notification.parentNode) {
+                        document.body.removeChild(notification);
+                    }
                 }, 300);
             }, 3000);
+        }
+
+        // Show loading spinner
+        function showLoading() {
+            loadingSpinner.classList.add('active');
+        }
+
+        // Hide loading spinner
+        function hideLoading() {
+            loadingSpinner.classList.remove('active');
+        }
+
+        // Simulate login/register process
+        function simulateAuthProcess() {
+            showLoading();
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    hideLoading();
+                    resolve();
+                }, 1500);
+            });
+        }
+
+        // QR Code Scanner Simulation
+        function openQRScanner() {
+            showNotification('Opening QR Code Scanner...', 'info');
+            
+            // In a real app, this would open the device camera
+            setTimeout(() => {
+                const modal = document.createElement('div');
+                modal.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.9);
+                    z-index: 1003;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                `;
+                
+                modal.innerHTML = `
+                    <div style="text-align: center; padding: 20px;">
+                        <i class="fas fa-camera" style="font-size: 60px; margin-bottom: 20px;"></i>
+                        <h2>QR Code Scanner</h2>
+                        <p>Point your camera at a QR code</p>
+                        <div style="width: 250px; height: 250px; border: 2px solid white; margin: 20px auto; position: relative;">
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                <i class="fas fa-qrcode" style="font-size: 100px; opacity: 0.3;"></i>
+                            </div>
+                        </div>
+                        <p style="margin-top: 20px; font-size: 14px; opacity: 0.8;">Simulation Mode - In a real app, this would access your camera</p>
+                        <button id="closeScanner" style="margin-top: 30px; padding: 10px 20px; background-color: var(--accent-color); color: white; border: none; border-radius: 5px; cursor: pointer;">Close Scanner</button>
+                        <button id="simulateScan" style="margin-top: 10px; padding: 10px 20px; background-color: var(--success-color); color: white; border: none; border-radius: 5px; cursor: pointer;">Simulate Scan</button>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                
+                // Add event listeners
+                document.getElementById('closeScanner').addEventListener('click', () => {
+                    document.body.removeChild(modal);
+                    showNotification('QR Scanner closed', 'info');
+                });
+                
+                document.getElementById('simulateScan').addEventListener('click', () => {
+                    document.body.removeChild(modal);
+                    showNotification('QR Code scanned successfully! Payment processing...', 'success');
+                    processPayment();
+                });
+            }, 500);
         }
 
         // Setup event listeners
@@ -1881,19 +3029,7 @@
             });
             
             // Checkout button
-            checkoutBtn.addEventListener('click', () => {
-                if (cart.length === 0) {
-                    showNotification('Your cart is empty!');
-                    return;
-                }
-                
-                cartSidebar.classList.remove('active');
-                showNotification(`Order placed successfully! Total: $${cartTotal.toFixed(2)}`);
-                
-                // Clear cart
-                cart = [];
-                updateCartDisplay();
-            });
+            checkoutBtn.addEventListener('click', openPaymentModal);
             
             // Menu toggle for mobile
             menuToggle.addEventListener('click', () => {
@@ -1959,6 +3095,225 @@
                 }
             });
             
+            // Notifications
+            notificationIcon.addEventListener('click', () => {
+                notificationsPanel.classList.add('active');
+                // Mark all notifications as read when panel is opened
+                unreadNotifications = 0;
+                notificationCount.textContent = '0';
+            });
+            
+            closeNotifications.addEventListener('click', () => {
+                notificationsPanel.classList.remove('active');
+            });
+            
+            clearNotificationsBtn.addEventListener('click', () => {
+                notifications.length = 0;
+                unreadNotifications = 0;
+                notificationCount.textContent = '0';
+                renderNotifications();
+                showNotification('All notifications cleared');
+            });
+            
+            // Payment methods selection
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', () => {
+                    // Remove active class from all methods
+                    paymentMethods.forEach(m => m.classList.remove('active'));
+                    
+                    // Add active class to clicked method
+                    method.classList.add('active');
+                    
+                    // Show corresponding payment section
+                    const paymentType = method.getAttribute('data-method');
+                    
+                    qrPaymentSection.style.display = 'none';
+                    cardPaymentSection.style.display = 'none';
+                    paypalPaymentSection.style.display = 'none';
+                    
+                    if (paymentType === 'qr') {
+                        qrPaymentSection.style.display = 'block';
+                    } else if (paymentType === 'card') {
+                        cardPaymentSection.style.display = 'block';
+                    } else if (paymentType === 'paypal') {
+                        paypalPaymentSection.style.display = 'block';
+                    }
+                });
+            });
+            
+            // Close payment modal
+            closePayment.addEventListener('click', () => {
+                paymentModal.classList.remove('active');
+                if (paymentTimer) {
+                    clearInterval(paymentTimer);
+                }
+            });
+            
+            // Simulate payment button
+            simulatePaymentBtn.addEventListener('click', processPayment);
+            
+            // Open scanner button
+            openScannerBtn.addEventListener('click', openQRScanner);
+            
+            // Process card payment
+            processCardPayment.addEventListener('click', (e) => {
+                e.preventDefault();
+                processPayment();
+            });
+            
+            // Process PayPal payment
+            processPaypalPayment.addEventListener('click', (e) => {
+                e.preventDefault();
+                processPayment();
+            });
+            
+            // Login/Register functionality
+            loginBtn.addEventListener('click', () => {
+                loginModal.classList.add('active');
+            });
+            
+            closeLogin.addEventListener('click', () => {
+                loginModal.classList.remove('active');
+            });
+            
+            loginTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.getAttribute('data-tab');
+                    
+                    // Update active tab
+                    loginTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    // Show corresponding form
+                    if (tabId === 'login') {
+                        loginForm.classList.add('active');
+                        registerForm.classList.remove('active');
+                    } else {
+                        loginForm.classList.remove('active');
+                        registerForm.classList.add('active');
+                    }
+                });
+            });
+            
+            switchToRegister.addEventListener('click', (e) => {
+                e.preventDefault();
+                loginTabs.forEach(t => t.classList.remove('active'));
+                document.querySelector('[data-tab="register"]').classList.add('active');
+                loginForm.classList.remove('active');
+                registerForm.classList.add('active');
+            });
+            
+            switchToLogin.addEventListener('click', (e) => {
+                e.preventDefault();
+                loginTabs.forEach(t => t.classList.remove('active'));
+                document.querySelector('[data-tab="login"]').classList.add('active');
+                registerForm.classList.remove('active');
+                loginForm.classList.add('active');
+            });
+            
+            // Login form submission
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                // Simple validation
+                if (!email || !password) {
+                    showNotification('Please fill in all fields', 'error');
+                    return;
+                }
+                
+                await simulateAuthProcess();
+                
+                // Simulate successful login
+                currentUser = {
+                    name: 'John Doe',
+                    email: email,
+                    avatar: 'J'
+                };
+                
+                // Save to localStorage
+                localStorage.setItem('bookstoreUser', JSON.stringify(currentUser));
+                
+                // Update UI
+                updateUserUI();
+                
+                // Close modal and show notification
+                loginModal.classList.remove('active');
+                showNotification('Login successful! Welcome back!');
+                
+                // Reset form
+                loginForm.reset();
+            });
+            
+            // Register form submission
+            registerForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const name = document.getElementById('registerName').value;
+                const email = document.getElementById('registerEmail').value;
+                const password = document.getElementById('registerPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                // Validation
+                if (!name || !email || !password || !confirmPassword) {
+                    showNotification('Please fill in all fields', 'error');
+                    return;
+                }
+                
+                if (password !== confirmPassword) {
+                    showNotification('Passwords do not match', 'error');
+                    return;
+                }
+                
+                await simulateAuthProcess();
+                
+                // Simulate successful registration
+                currentUser = {
+                    name: name,
+                    email: email,
+                    avatar: name.charAt(0).toUpperCase()
+                };
+                
+                // Save to localStorage
+                localStorage.setItem('bookstoreUser', JSON.stringify(currentUser));
+                
+                // Update UI
+                updateUserUI();
+                
+                // Close modal and show notification
+                loginModal.classList.remove('active');
+                showNotification('Registration successful! Welcome to Moon & Sunflower!');
+                
+                // Reset form
+                registerForm.reset();
+            });
+            
+            // User profile dropdown
+            userProfile.addEventListener('click', (e) => {
+                e.stopPropagation();
+                userDropdown.classList.toggle('active');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', () => {
+                userDropdown.classList.remove('active');
+            });
+            
+            // Logout functionality
+            logoutBtn.addEventListener('click', () => {
+                currentUser = null;
+                localStorage.removeItem('bookstoreUser');
+                updateUserUI();
+                showNotification('Logged out successfully');
+                userDropdown.classList.remove('active');
+            });
+            
+            // My Account button
+            myAccountBtn.addEventListener('click', () => {
+                showNotification('Account page will open soon!', 'info');
+                userDropdown.classList.remove('active');
+            });
+            
             // Add CSS for notification animation
             const style = document.createElement('style');
             style.textContent = `
@@ -1972,6 +3327,35 @@
                 }
             `;
             document.head.appendChild(style);
+            
+            // Handle window resize for responsive behavior
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    navLinksContainer.classList.remove('active');
+                }
+            });
+            
+            // Format card number input
+            const cardNumberInput = document.getElementById('cardNumber');
+            if (cardNumberInput) {
+                cardNumberInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+                    let formatted = value.replace(/(\d{4})/g, '$1 ').trim();
+                    e.target.value = formatted.substring(0, 19);
+                });
+            }
+            
+            // Format expiry date input
+            const expiryDateInput = document.getElementById('expiryDate');
+            if (expiryDateInput) {
+                expiryDateInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+                    if (value.length >= 2) {
+                        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                    }
+                    e.target.value = value.substring(0, 5);
+                });
+            }
         }
     </script>
 </body>
